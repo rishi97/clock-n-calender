@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Digital Clocks</title>
+  <style>
+    .clock {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="istClock"></div>
+  <div class="clock" id="gmtClock"></div>
+  <div class="clock" id="uctClock"></div>
+  <div class="clock" id="estClock"></div>
+  <div class="clock" id="jptClock"></div>
+
+  <script>
+    function updateClocks() {
+      var istClock = document.getElementById('istClock');
+      var gmtClock = document.getElementById('gmtClock');
+      var uctClock = document.getElementById('uctClock');
+      var estClock = document.getElementById('estClock');
+      var jptClock = document.getElementById('jptClock');
+
+      var istTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+      var gmtTime = new Date().toLocaleString('en-US', { timeZone: 'Europe/London' });
+      var uctTime = new Date().toLocaleString('en-US', { timeZone: 'UCT' });
+      var estTime = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+      var jptTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' });
+
+      istClock.innerHTML = istTime;
+      gmtClock.innerHTML = gmtTime;
+      uctClock.innerHTML = uctTime;
+      estClock.innerHTML = estTime;
+      jptClock.innerHTML = jptTime;
+    }
+
+    setInterval(updateClocks, 1000);
+  </script>
+</body>
+</html>
