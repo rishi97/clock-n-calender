@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Clock and Calendar</title>
+  <style>
+    /* CSS styles for clock and calendar */
+    #clock {
+      font-size: 48px;
+      text-align: center;
+    }
+    #calendar {
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+  <div id="calendar"></div>
+
+  <script>
+    // JavaScript code for live clock
+    function updateClock() {
+      var currentTime = new Date();
+      var hours = currentTime.getHours();
+      var minutes = currentTime.getMinutes();
+      var seconds = currentTime.getSeconds();
+
+      // Add leading zeros if necessary
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      // Update clock element
+      document.getElementById("clock").innerHTML = timeString;
+
+      // Update clock every second
+      setTimeout(updateClock, 1000);
+    }
+
+    // JavaScript code for calendar
+    function updateCalendar() {
+      var currentDate = new Date();
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      var dateString = currentDate.toLocaleDateString(undefined, options);
+
+      // Update calendar element
+      document.getElementById("calendar").innerHTML = dateString;
+    }
+
+    // Call the update functions to start the clock and calendar
+    updateClock();
+    updateCalendar();
+  </script>
+</body>
+</html>
